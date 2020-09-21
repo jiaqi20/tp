@@ -13,7 +13,6 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
-
 class RemarkCommandTest {
     private static final String REMARK_STUB = "remark";
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
