@@ -54,7 +54,7 @@ public class RecipeCard extends UiPart<Region> {
         this.recipe = recipe;
         id.setText(displayedIndex + ". ");
         name.setText(recipe.getName().fullName);
-        instruction.setText(recipe.getInstruction());
+        instruction.setText(recipe.printInstruction());
 
         //Image image = new Image(recipe.getRecipeImage());
         //recipeImageView = new ImageView(image);

@@ -36,7 +36,7 @@ public class SampleDataUtil {
         Scanner sc = new Scanner(file);
         int index = 0;
         Name recipeName = null;
-        String recipeInstructions = "";
+        ArrayList<String> recipeInstructions = new ArrayList<>();
         String recipeImage = "";
         HashSet<Tag> tag = new HashSet<>();
         ArrayList<Ingredient> ingredients = new ArrayList<>();
@@ -74,15 +74,21 @@ public class SampleDataUtil {
     }
 
     private static String getRecipeName(String str) {
-        return str.substring(10, str.length() - 3);
+        return str.substring(10, str.length() - 2);
     }
 
     private static String getTag(String str) {
         return str.substring(8, str.length() - 3);
     }
 
-    private static String getRecipeInstructions(String str) {
-        return str.substring(17, str.length() - 2);
+    private static ArrayList<String> getRecipeInstructions(String str) {
+        String instr = str.substring(17, str.length() - 2);
+        String[] instructions = instr.split("instr/");
+        ArrayList<String> instructionList = new ArrayList<>();
+        for (String instruction : instructions) {
+            instructionList.add(instruction);
+        }
+        return instructionList;
     }
 
     private static ArrayList<Ingredient> getRecipeIngredients(String str) {
@@ -129,7 +135,13 @@ public class SampleDataUtil {
 
     private static Recipe getFallbackRecipe() {
         Name name = new Name("Tahini cake");
-        String instructions = "Heat oven. Cream butter, add flour";
+        String instruction1 = "Heat oven";
+        String instruction2 = "Cream butter";
+        String instruction3 = "Add flour";
+        ArrayList<String> instructionList = new ArrayList<>();
+        instructionList.add(instruction1);
+        instructionList.add(instruction2);
+        instructionList.add(instruction3);
         String recipeImage = "https://i.guim.co.uk/img/media/0a07b58d3e8a5c67901c90c7b3b25885095597e6"
                 + "/84_2248_5678_6000/master/5678.jpg?width=620&quality=85&auto=format&fit=max&s=b20e33f"
                 + "7054827278dbd2b9d8a2e7616";
@@ -141,7 +153,7 @@ public class SampleDataUtil {
         Calories calories = new Calories(100);
         HashSet<Tag> tags = new HashSet<>();
         tags.add(new Tag("healthy"));
-        return new Recipe(name, instructions, recipeImage, ingredientList, calories, tags);
+        return new Recipe(name, instructionList, recipeImage, ingredientList, calories, tags);
     }
 
     public static ReadOnlyWishfulShrinking getSampleWishfulShrinking() {

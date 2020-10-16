@@ -20,7 +20,7 @@ public class Recipe {
 
     // Identity fields
     private final Name name;
-    private final String instruction;
+    private final ArrayList<String> instruction;
     private final String recipeImage;
     // Data fields
     private final ArrayList<Ingredient> ingredients;
@@ -30,7 +30,7 @@ public class Recipe {
     /**
      * Every field must be present and not null.
      */
-    public Recipe(Name name, String instruction, String recipeImage,
+    public Recipe(Name name, ArrayList<String> instruction, String recipeImage,
                   ArrayList<Ingredient> ingredients, Calories calories,
                   Set<Tag> tags) {
         requireAllNonNull(name, ingredients, calories, instruction, tags);
@@ -46,7 +46,7 @@ public class Recipe {
         return name;
     }
 
-    public String getInstruction() {
+    public ArrayList<String> getInstruction() {
         return instruction;
     }
 
@@ -68,6 +68,18 @@ public class Recipe {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    /**
+     * Prints a string of instructions for recipes.
+     * @return Instructions for recipe.
+     */
+    public String printInstruction() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < instruction.size(); i++) {
+            stringBuilder.append((i + 1) + ". " + instruction.get(i) + " ");
+        }
+        return stringBuilder.toString();
     }
 
     /**
@@ -128,7 +140,7 @@ public class Recipe {
                 .append(" Calories: ")
                 .append(getCalories() + " cal")
                 .append(" Instructions: ")
-                .append(getInstruction())
+                .append(printInstruction())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

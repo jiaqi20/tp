@@ -92,7 +92,8 @@ public class EditCommand extends Command {
         assert recipeToEdit != null;
 
         Name updatedName = editRecipeDescriptor.getName().orElse(recipeToEdit.getName());
-        String updatedInstruction = editRecipeDescriptor.getInstruction().orElse(recipeToEdit.getInstruction());
+        ArrayList<String> updatedInstruction =
+                editRecipeDescriptor.getInstruction().orElse(recipeToEdit.getInstruction());
         String updatedRecipeImage = editRecipeDescriptor.getRecipeImage().orElse(recipeToEdit.getRecipeImage());
         ArrayList<Ingredient> updatedIngredient =
                 editRecipeDescriptor.getIngredient().orElse(recipeToEdit.getIngredient());
@@ -127,7 +128,7 @@ public class EditCommand extends Command {
      */
     public static class EditRecipeDescriptor {
         private Name name;
-        private String instruction;
+        private ArrayList<String> instruction;
         private String recipeImage;
         private ArrayList<Ingredient> ingredients;
         private Calories calories;
@@ -162,10 +163,10 @@ public class EditCommand extends Command {
             return Optional.ofNullable(name);
         }
 
-        public void setInstruction(String instruction) {
+        public void setInstruction(ArrayList<String> instruction) {
             this.instruction = instruction;
         }
-        public Optional<String> getInstruction() {
+        public Optional<ArrayList<String>> getInstruction() {
             return Optional.ofNullable(instruction);
         }
 
@@ -179,8 +180,6 @@ public class EditCommand extends Command {
         public void setIngredient(ArrayList<Ingredient> ingredients) {
             this.ingredients = ingredients;
         }
-
-
         public Optional<ArrayList<Ingredient>> getIngredient() {
             return Optional.ofNullable(ingredients);
         }

@@ -25,7 +25,7 @@ class JsonAdaptedRecipe {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Recipe's %s field is missing!";
 
     private final String name;
-    private final String instruction;
+    private final ArrayList<String> instruction;
     private final String recipeImage;
     private final ArrayList<Ingredient> ingredients;
     private final Integer calories;
@@ -36,7 +36,7 @@ class JsonAdaptedRecipe {
      */
     @JsonCreator
     public JsonAdaptedRecipe(@JsonProperty("name") String name,
-                             @JsonProperty("instruction") String instruction,
+                             @JsonProperty("instruction") ArrayList<String> instruction,
                              @JsonProperty("recipeImage") String recipeImage,
                              @JsonProperty("ingredients") ArrayList<Ingredient> ingredients,
                              @JsonProperty("calories") Integer calories,
@@ -88,7 +88,7 @@ class JsonAdaptedRecipe {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     String.class.getSimpleName()));
         }
-        final String modelInstruction = instruction;
+        final ArrayList<String> modelInstruction = new ArrayList<>(instruction);
 
         if (recipeImage == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,

@@ -53,9 +53,14 @@ public class AddRecipeCommandParser implements Parser<AddRecipeCommand> {
         Calories calories = ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        String instruction = argMultimap.getValue(PREFIX_INSTRUCTION).get();
-        String recipeImage = argMultimap.getValue(PREFIX_RECIPE_IMAGE).get();
+        String instructionString = argMultimap.getValue(PREFIX_INSTRUCTION).get();
+        ArrayList<String> instruction = new ArrayList<>();
+        String[] instructionArray = instructionString.split("instr/");
+        for (int i = 0; i < instructionArray.length; i++) {
+            instruction.add(instructionArray[i]);
+        }
 
+        String recipeImage = argMultimap.getValue(PREFIX_RECIPE_IMAGE).get();
 
         Recipe recipe = new Recipe(name, instruction, recipeImage, ingredients, calories, tagList);
 
