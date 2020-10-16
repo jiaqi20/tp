@@ -36,7 +36,7 @@ public class RecipeUtil {
                 .map(item -> item.getValue())
                 .reduce("", (a, b) -> b.equals("") ? a : b + ", " + a) + " ");
         sb.append(PREFIX_CALORIES + String.valueOf(recipe.getCalories().value) + " ");
-        sb.append(PREFIX_INSTRUCTION + recipe.getInstruction() + " ");
+        sb.append(PREFIX_INSTRUCTION + recipe.printInstruction() + " ");
         recipe.getTags().stream().forEach(s -> sb.append(PREFIX_TAG + s.tagName + " "));
         return sb.toString();
     }

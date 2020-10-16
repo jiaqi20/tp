@@ -29,7 +29,7 @@ public class JsonAdaptedConsumptionTest {
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final ArrayList<Ingredient> VALID_INGREDIENT = BENSON.getIngredient();
     private static final int VALID_CALORIES = BENSON.getCalories().value;
-    private static final String VALID_INSTRUCTION = BENSON.getInstruction();
+    private static final ArrayList<String> VALID_INSTRUCTION = BENSON.getInstruction();
     private static final String VALID_RECIPE_IMAGE = BENSON.getRecipeImage();
     private static final List<JsonAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
             .map(JsonAdaptedTag::new)

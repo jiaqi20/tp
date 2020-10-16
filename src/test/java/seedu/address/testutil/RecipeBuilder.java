@@ -21,13 +21,14 @@ public class RecipeBuilder {
     public static final ArrayList<Ingredient> DEFAULT_INGREDIENTS =
             new ArrayList<>(List.of(new Ingredient("Veggies", ""), new Ingredient("Snakes", "")));
     public static final Integer DEFAULT_CALORIES = 10;
-    public static final String DEFAULT_INSTRUCTION = "instruction";
+    public static final ArrayList<String> DEFAULT_INSTRUCTION =
+            new ArrayList<>(List.of("instruction", "instruction2"));
     public static final String DEFAULT_RECIPE_IMAGE = "images/healthy1.jpg";
 
     private Name name;
     private ArrayList<Ingredient> ingredients;
     private Calories calories;
-    private String instruction;
+    private ArrayList<String> instruction;
     private String recipeImage;
     private Set<Tag> tags;
 
@@ -89,7 +90,12 @@ public class RecipeBuilder {
     /**
      * Sets the instruction of the {@code Recipe} that we are building.
      */
-    public RecipeBuilder withInstruction(String instruction) {
+    public RecipeBuilder withInstruction(String instructionString) {
+        String[] instructionToken = instructionString.split("instr/");
+        ArrayList<String> instruction = new ArrayList<>();
+        for (int i = 0; i < instructionToken.length; i++) {
+            instruction.add(instructionToken[i]);
+        }
         this.instruction = instruction;
         return this;
     }
