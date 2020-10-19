@@ -31,6 +31,7 @@ public class IngredientParser {
             }
             ingredients.add(new Ingredient(ingName, ingQuantity));
         }
+
         return ingredients;
     }
 

@@ -92,7 +92,7 @@ public class SampleDataUtil {
     }
 
     private static ArrayList<Ingredient> getRecipeIngredients(String str) {
-        String ingts = str.substring(16, str.length() - 3);
+        String ingts = str.substring(16, str.length() - 2);
         String[] ingredients = ingts.split(", ");
         ArrayList<Ingredient> ingredientList = new ArrayList<>();
         for (String ingredient: ingredients) {

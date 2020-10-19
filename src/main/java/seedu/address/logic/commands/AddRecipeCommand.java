@@ -33,7 +33,7 @@ public class AddRecipeCommand extends Command {
             + PREFIX_NAME + "Chicken salad "
             + PREFIX_INGREDIENT + "chicken - 100g, lettuce - a bit, tomato "
             + PREFIX_CALORIES + "100 "
-            + PREFIX_INSTRUCTION + "1. cook 2. eat "
+            + PREFIX_INSTRUCTION + "Cook. Eat. "
             + PREFIX_RECIPE_IMAGE + "images/salad.jpg "
             + PREFIX_TAG + "healthy "
             + PREFIX_TAG + "delicious";
@@ -68,5 +68,10 @@ public class AddRecipeCommand extends Command {
         return other == this // short circuit if same object
                 || (other instanceof AddRecipeCommand // instanceof handles nulls
                 && toAdd.equals(((AddRecipeCommand) other).toAdd));
+    }
+
+    @Override
+    public String toString() {
+        return toAdd.toString();
     }
 }

@@ -54,10 +54,11 @@ public class AddRecipeCommandParser implements Parser<AddRecipeCommand> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         String instructionString = argMultimap.getValue(PREFIX_INSTRUCTION).get();
+        System.out.println(instructionString);
         ArrayList<String> instruction = new ArrayList<>();
-        String[] instructionArray = instructionString.split("instr/");
+        String[] instructionArray = instructionString.split("\\.");
         for (int i = 0; i < instructionArray.length; i++) {
-            instruction.add(instructionArray[i]);
+            instruction.add(instructionArray[i] + ".");
         }
 
         String recipeImage = argMultimap.getValue(PREFIX_RECIPE_IMAGE).get();

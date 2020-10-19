@@ -95,7 +95,7 @@ public class Recipe {
                 && otherRecipe.getName().equals(getName())
                 && otherRecipe.getInstruction().equals(getInstruction())
                 && otherRecipe.getRecipeImage().equals(getRecipeImage())
-                && (otherRecipe.getIngredient().equals(getIngredient()))
+                && otherRecipe.getIngredient().equals(getIngredient())
                 && otherRecipe.getCalories().equals(getCalories())
                 && otherRecipe.getTags().equals(getTags());
     }
@@ -137,7 +137,7 @@ public class Recipe {
                 .append(ingredients.stream()
                         .map(item -> item.getQuantity() + " " + item.getValue())
                         .reduce("", (a, b) -> b.equals("") ? a : b + ", " + a))
-                .append(" Calories: ")
+                .append("Calories: ")
                 .append(getCalories() + " cal")
                 .append(" Instructions: ")
                 .append(printInstruction())

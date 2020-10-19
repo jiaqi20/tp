@@ -17,13 +17,18 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class RecipeBuilder {
 
-    public static final String DEFAULT_NAME = "Alice Pauline";
+    public static final String DEFAULT_NAME = "Sandwich";
     public static final ArrayList<Ingredient> DEFAULT_INGREDIENTS =
-            new ArrayList<>(List.of(new Ingredient("Veggies", ""), new Ingredient("Snakes", "")));
-    public static final Integer DEFAULT_CALORIES = 10;
+            new ArrayList<>(List.of(new Ingredient("Kaiser Rolls Or Other Bread", "2 whole")));
+    public static final Integer DEFAULT_CALORIES = 70;
     public static final ArrayList<String> DEFAULT_INSTRUCTION =
-            new ArrayList<>(List.of("instruction", "instruction2"));
-    public static final String DEFAULT_RECIPE_IMAGE = "images/healthy1.jpg";
+            new ArrayList<>(List.of(
+                    "Make egg salad by chopping the hard boiled eggs and mixing in a bowl with mayonnaise, Dijon.",
+                    "Halve the rolls and spread one half with Dijon, the other half with mayonnaise.",
+                    "Sprinkle the mayonnaise-spread half with salt and pepper.",
+                    "Lay cheese and ham on the mustard half; "
+                            + "lay avocado, onion slices, tomato slices, egg salad, and lettuce on the other half."));
+    public static final String DEFAULT_RECIPE_IMAGE = "images/sandwich.jpeg";
 
     private Name name;
     private ArrayList<Ingredient> ingredients;
@@ -91,10 +96,10 @@ public class RecipeBuilder {
      * Sets the instruction of the {@code Recipe} that we are building.
      */
     public RecipeBuilder withInstruction(String instructionString) {
-        String[] instructionToken = instructionString.split("instr/");
+        String[] instructionToken = instructionString.split("\\.");
         ArrayList<String> instruction = new ArrayList<>();
         for (int i = 0; i < instructionToken.length; i++) {
-            instruction.add(instructionToken[i]);
+            instruction.add(instructionToken[i] + ". ");
         }
         this.instruction = instruction;
         return this;
