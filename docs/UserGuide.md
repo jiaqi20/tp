@@ -36,7 +36,7 @@ Choose a topic from the table of contents to get started on your **Wishful Shrin
         * [5.2.4 Editing an ingredient: `editF`](#edit-ingredient)
         * [5.2.5 Getting an ingredient to edit: `editF`](#get-edit-ingredient)
         * [5.2.6 Searching for an Ingredient: `searchF`](#search-ingredient)
-        * [5.2.7 Clearing all ingredients : `clearF`](#clear-ingredient) 
+        * [5.2.7 Clearing all ingredients : `clearF`](#clear-ingredient)
         <br><br>
     - [5.3 Consumption-related Commands](#53-consumption-related-commands)
         * [5.3.1 Eating a recipe : `eatR`](#eat-consumption)
@@ -263,19 +263,21 @@ Multiple ingredients are separated by `,`.
 Everyone should have permission to access the image path or online image URL you provide.
 </div> 
 
-<div style="page-break-after: always;"></div>
-
 * Here are the respective actions required by users depending on different usage of `IMAGE`:
 
   Usage | Action | Example | Outcome
   ---------|-----------------------|---------|---------
   Image from local storage | 1. Specify **absolute path** of the image<br><br> 2. Add **file://** in front of the file path<br><br> 3. Replace **IMAGE** in img/IMAGE with the file path of your image | file:///D:/images/wishful<br>/data/myimage.png | Local image will be displayed
   Image from online resources | 1. Make sure the computer is connected to Internet<br><br> 2. Copy the online **image address** | Valid image address which starts with https:// and ends with .jpg or jpeg or png | The image will be downloaded into data folder and displayed
+ 
+ <div style="page-break-after: always;"></div>
+  
+  Usage | Action | Example | Outcome
+  ---------|-----------------------|---------|---------
   Sample images | Replace IMAGE in img/IMAGE with the **file path**<br> (refer to table [below](#table) ) | img/images/healthy1.jpg | Sample image is displayed
   Invalid image | NA | 1. Invalid local file path<br><br>2. Invalid URL<br><br>3. No internet connection when adding an online image <br><br> 4. Wishful Shrinking doesn't have permission to access the folder or website | Default image will be displayed
   No image input | NA | NA | Default image will be displayed since `IMAGE` is **OPTIONAL FIELD**
  
-<div style="page-break-after: always;"></div>
 
 * Here is the table <a id="table"></a> containing built-in **sample images** provided by Wishful Shrinking:
 
@@ -311,6 +313,8 @@ Contributed by: Jia Qi
 Format: `recipes`
 <br><br><br>
 
+<div style="page-break-after: always;"></div>
+
 ### 5.1.3 Deleting a recipe : `deleteR` <a id="delete-recipe"></a>
 Contributed by: Jia Qi
 
@@ -333,8 +337,6 @@ Examples:
 * `searchR n/salad` followed by `deleteR 1` deletes the 1st recipe in the result of the `searchR` command.
 <br><br><br>
 
-<div style="page-break-after: always;"></div>
-
 ### 5.1.4 Editing a recipe: `editR` <a id="edit-recipe"></a>
 Contributed by: Olivia, Jia Qi, Tian Yong, Caitlin
 
@@ -350,6 +352,9 @@ Format: `editR INDEX [n/NAME] [i/INGREDIENT [ -QUANTITY][, MORE INGREDIENTS [ -Q
 * Edits the recipe at the specified `INDEX`.
 * The index refers to the index number shown in the recent displayed Recipe List.
 * `INGREDIENT` can take in an optional `Quantity` e.g. `i/Tomato -2 whole` or `i/salt -a pinch`.
+
+<div style="page-break-after: always;"></div>
+
 <div markdown="span" class="alert alert-primary">:memo: **Note:**
 `QUANTITY` is separated with a mandatory space before `-`. After the dash, it accepts quantity in the format of
  -NUMBER STRING e.g. `-54.0 kilograms` or STRING e.g. `-a pinch`. NUMBER only accept up to 10 digits, including a
@@ -430,8 +435,6 @@ Examples:
  command box.
 <br><br><br>
 
-<div style="page-break-after: always;"></div>
-
 ### 5.1.6 Selecting a single recipe : `selectR` <a id="select-recipe"></a>
 Contributed by: Hieu
 
@@ -464,6 +467,8 @@ Format: `close`
 * This command closes the left drawer that is opened after you select a recipe.
 * Nothing will happen if you use this command when the left drawer is not open.
 <br><br><br>
+
+<div style="page-break-after: always;"></div>
 
 ### 5.1.8 Searching for a recipe: `searchR` <a id="search-recipe"></a>
 Contributed by: Caitlin
@@ -501,6 +506,9 @@ Contributed by: Caitlin
 <br>  The image below is what Wishful Shrinking looks like after you have gotten the recommended recipes. In
  this case, `recommend` returns the recipe `salad` with ingredients `lettuce`, `olive oil` and `tomato` since
   the example user has all the ingredients: `lettuce`, `olive oil` and `tomato` in their Fridge.<br><br>
+
+<div style="page-break-after: always;"></div>
+
 <img src="images/feature/recipe/RecommendImage.png" width="550" height="300">
 <br><br><br>
 
@@ -528,8 +536,6 @@ Contributed by: Tian Yong
 
 Format: `clearR`
 <br><br><br>
-
-<div style="page-break-after: always;"></div>
 
 ## 5.2 Fridge-related Commands <a id="52-fridge-related-commands"></a>
 
@@ -699,8 +705,6 @@ Contributed by: Tian Yong
 
 Format: `clearF`
 <br><br><br>
-
-<div style="page-break-after: always;"></div>
 
 ## 5.3 Consumption-related Commands <a id="53-consumption-related-commands"></a>
 
@@ -873,12 +877,12 @@ Features | Format, Examples
 **Edit recipe** | `editR INDEX [n/NAME] [i/INGREDIENT [ -QUANTITY][, MORE INGREDIENTS [ -QUANTITY]]] [c/CALORIES] [img/IMAGE] [instr/INSTRUCTION[. MORE INSTRUCTIONS]] [t/TAG]...` <br> e.g. `editR` 2 n/Apple salad i/apple
 **Get edit recipe info** | `editR INDEX`<br> e.g. `editR 2`
 **Select recipe** | `selectR INDEX`<br> e.g. `selectR 3`
-**Close recipe drawer**| `close`
 
 <div style="page-break-after: always;"></div>
 
 Features | Format, Examples
 --------|------------------
+**Close recipe drawer**| `close`
 **Search for recipe** | `searchR [i/INGREDIENT [ MORE INGREDIENTS]] [n/NAME [ MORE NAMES]] [t/TAG [ MORE TAGS]]`<br> e.g. `searchR` i/lettuce tomato, `searchR` n/salad, `searchR` t/healthy
 **Recommend recipe** | `recommend`
 **Clear all recipes** | `clearR`
